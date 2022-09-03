@@ -1,0 +1,49 @@
+<tr class="
+  {{~#if table-tr--expandable}} pf-c-table__expandable-row{{/if}}
+  {{~#if table-tr--IsControlRow}} pf-c-table__control-row{{/if}}
+  {{~#if table-tr--IsExpanded}} pf-m-expanded{{/if}}
+  {{~#if table-tr--details--IsExpanded}} pf-m-tree-view-details-expanded{{/if}}
+  {{~#if table-tr--IsHoverable}} pf-m-hoverable{{/if}}
+  {{~#if table-tr--IsSelected}} pf-m-selected{{/if}}
+  {{~#if table-tr--IsBorderRow}} pf-m-border-row{{/if}}
+  {{~#if table-tr--modifier}} {{table-tr--modifier}}{{/if}}"
+  {{#if table--IsTree-view}}
+    aria-level="{{table--IsTree-view--level}}"
+    aria-setsize="{{table--IsTree-view--setsize}}"
+    aria-posinset="{{table--IsTree-view--posinset}}"
+
+    {{!-- if leaf and not expanded, apply hidden --}}
+    {{#if table-tr--tree--IsLeaf}}
+      tabindex="-1"
+    {{else}}
+      tabindex="0"
+      {{#if table-tr--expanded}}
+        aria-expanded="true"
+      {{else}}
+        aria-expanded="false"
+      {{/if}}
+    {{/if}}
+    {{#if table-tr--IsHidden}}
+      hidden
+    {{/if}}
+  {{/if}}
+  {{#unless table-tr--IsBorderRow}}
+    {{#if table--grid}}
+      role="row"
+    {{/if}}
+  {{/unless}}
+  {{#if table-tr--IsHoverable}}
+    tabindex="0"
+  {{/if}}
+  {{#if table-tr--IsBorderRow}}
+    aria-hidden="true"
+  {{/if}}
+  {{#if table-tr--attribute}}
+    {{{table-tr--attribute}}}
+  {{/if}}>
+  {{#if table-tr--IsBorderRow}}
+    {{> table-td table-td--IsEmpty="true" table-td--attribute=(concat 'colspan="' table-tr--colspan '"')}}
+  {{else}}
+    {{> @partial-block}}
+  {{/if}}
+</tr>

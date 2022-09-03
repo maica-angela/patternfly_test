@@ -1,0 +1,10 @@
+<span class="pf-c-badge{{#if badge--modifier}} {{badge--modifier}}{{/if}}"
+  {{#if badge--attribute}}
+    {{{badge--attribute}}}
+  {{/if}}>
+  {{#if badge--text}}
+    {{badge--text}}
+  {{else if @partial-block}}
+    {{> @partial-block}}
+  {{/if}}
+</span>

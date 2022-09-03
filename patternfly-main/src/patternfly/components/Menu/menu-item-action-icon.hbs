@@ -1,0 +1,10 @@
+<span class="pf-c-menu__item-action-icon{{#if menu-item-action-icon--modifier}} {{menu-item-action-icon--modifier}}{{/if}}"
+  {{#if menu-item-action-icon--attribute}}
+    {{{menu-item-action-icon--attribute}}}
+  {{/if}}>
+  {{#if menu-item-action--IsFavorite}}
+    <i class="fas fa-star" aria-hidden="true"></i>
+  {{else}}
+    {{> @partial-block}}
+  {{/if}}
+</span>

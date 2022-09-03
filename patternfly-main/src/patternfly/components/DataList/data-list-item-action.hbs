@@ -1,0 +1,10 @@
+<div class="pf-c-data-list__item-action{{#if data-list-item-action--modifier}} {{data-list-item-action--modifier}}{{/if}}"
+  {{#if data-list-item-action--attribute}}
+    {{{data-list-item-action--attribute}}}
+  {{/if}}>
+  {{#if @partial-block}}
+    {{> @partial-block}}
+  {{else}}
+    {{> data-list-action}}
+  {{/if}}
+</div>

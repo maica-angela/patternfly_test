@@ -1,0 +1,27 @@
+<{{#if page-sidebar--IsAside}}aside{{else}}div{{/if}} class="pf-c-page__sidebar{{#if page-sidebar--modifier}} {{page-sidebar--modifier}}{{/if}}"
+  {{#if page-sidebar--attribute}}
+    {{{page-sidebar--attribute}}}
+  {{/if}}>
+  {{#if page-sidebar--HasContextSelector}}
+    {{#> page-sidebar-body page-sidebar-body--modifier="pf-m-menu"}}
+      {{#> context-selector context-selector--IsExpanded=page-sidebar--ContextSelectorIsExpanded context-selector--modifier="pf-m-page-insets pf-m-large" context-selector--id="context-selector-collapsed-example" context-selector--label-text="Selected project"}}
+        {{#> context-selector-toggle context-selector-toggle--attribute=(concat 'id="' context-selector--id '-toggle"' 'aria-labelledby="' context-selector--id '-label ' context-selector--id '-toggle"')}}
+          {{#> context-selector-toggle-text}}
+            My project
+          {{/context-selector-toggle-text}}
+          {{#> context-selector-toggle-icon}}
+          {{/context-selector-toggle-icon}}
+        {{/context-selector-toggle}}
+        {{#> context-selector-menu}}
+          {{#> context-selector-menu-search}}
+            {{#> search-input}}{{/search-input}}
+          {{/context-selector-menu-search}}
+          {{> __context-selector-menu-menu}}
+        {{/context-selector-menu}}
+      {{/context-selector}}
+    {{/page-sidebar-body}}
+  {{/if}}
+  {{#> page-sidebar-body}}
+    {{> @partial-block}}
+  {{/page-sidebar-body}}
+</{{#if page-sidebar--IsAside}}aside{{else}}div{{/if}}>
